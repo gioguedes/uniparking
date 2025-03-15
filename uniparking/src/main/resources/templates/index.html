@@ -48,11 +48,6 @@
     </nav>
 </header>
 
-<!--
-  d-flex flex-column min-vh-100 => Faz o body ter altura mínima de 100% da tela.
-  main: flex-grow-1 => faz com que main cresça para ocupar o espaço entre header e footer.
-  align-items-center justify-content-center => centraliza vertical e horizontalmente.
--->
 <main class="d-flex flex-grow-1 align-items-center justify-content-center">
     <div class="container text-center">
         <h2 class="fw-bold mb-3 text-dark">Bem-vindo ao Uniparking</h2>
@@ -70,14 +65,13 @@
             <a class="btn btn-primary shadow-sm" th:href="@{/registros}">
                 <i class="fa-solid fa-list me-1"></i> Registros
             </a>
+            <a class="btn btn-primary shadow-sm" th:href="@{/estacionamento}">
+                <i class="fa-solid fa-building me-1"></i> Estacionamento
+            </a>
         </div>
     </div>
 </main>
 
-<!--
-  Rodapé com mt-auto ou não é necessário,
-  pois o main já ocupa todo o espaço (flex-grow-1).
--->
 <footer class="bg-dark text-white text-center py-3">
     <div class="container">
         <span>&copy; Uniparking 2025</span>
