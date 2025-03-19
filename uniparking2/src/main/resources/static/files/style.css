@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+    --paynes-gray: #4f6d7aff;
+    --columbia-blue: #c0d6dfff;
+    --alice-blue: #dbe9eeff;
+    --true-blue: #4a6fa5ff;
+    --lapis-lazuli: #166088ff;
+    --text-color: #333;
+    --light-text: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    --alert-success-bg: #d4edda;
+    --alert-success-border: #c3e6cb;
+    --alert-success-text: #155724;
+    --alert-danger-bg: #f8d7da;
+    --alert-danger-border: #f5c6cb;
+    --alert-danger-text: #721c24;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--alice-blue);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: var(--paynes-gray);
+    box-shadow: 0 4px 10px var(--shadow-color);
+}
+
+.navbar {
+    padding: 15px 20px;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1rem;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--columbia-blue);
+}
+
+.hero {
+    background: linear-gradient(45deg, var(--paynes-gray), var(--true-blue));
+    padding: 80px 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    text-align: center;
+}
+
+.hero h2 {
+    color: var(--alice-blue);
+    font-weight: 600;
+}
+
+.hero p {
+    color: var(--columbia-blue);
+}
+
+.btn {
+    font-weight: 600;
+    padding: 12px 18px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-primary {
+    background: var(--true-blue);
+    border: none;
+}
+
+.btn-primary:hover {
+    background: var(--lapis-lazuli);
+    transform: scale(1.05);
+}
+
+.table {
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px var(--shadow-color);
+}
+
+.table th {
+    background: var(--paynes-gray);
+    color: var(--light-text);
+    text-transform: uppercase;
+}
+
+.table td {
+    background: var(--alice-blue);
+}
+
+footer {
+    background: var(--paynes-gray);
+    color: var(--light-text);
+    padding: 15px 0;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center;
+    }
+    .hero {
+        padding: 50px 15px;
+    }
+}
+
+.estacionamento-container {
+    margin: 40px 0;
+}
+
+.estacionamento-card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px var(--shadow-color);
+    transition: transform 0.3s ease;
+}
+
+.estacionamento-card:hover {
+    transform: translateY(-5px);
+}
+
+.estacionamento-card .card-body {
+    padding: 20px;
+}
+
+.estacionamento-card .card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--paynes-gray);
+    margin-bottom: 10px;
+}
+
+.estacionamento-card .card-text {
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+.alert {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+
+.alert-success {
+    background-color: var(--alert-success-bg);
+    border-color: var(--alert-success-border);
+    color: var(--alert-success-text);
+}
+
+.alert-danger {
+    background-color: var(--alert-danger-bg);
+    border-color: var(--alert-danger-border);
+    color: var(--alert-danger-text);
+}
