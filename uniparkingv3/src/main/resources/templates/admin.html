@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo - Uniparking</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/static/style.css}" />
+    <style>
+        .card { margin-top: 20px; }
+    </style>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" th:href="@{/}">
+                <i class="fa-solid fa-chart-line me-2"></i> Uniparking
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navRegistros">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navRegistros">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/}">
+                            <i class="fa-solid fa-house me-1"></i> Início
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<main class="container my-5">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h1 class="card-title text-center mb-0">
+                <i class="fa-solid fa-list me-2"></i> Registros
+            </h1>
+            <a class="btn btn-info" th:href="@{/registros/download}">
+                <i class="fa-solid fa-download me-1"></i> Download PDF
+            </a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-dark">
+                    <tr>
+                        <th><i class="fa-solid fa-user"></i> Nome Cliente</th>
+                        <th><i class="fa-solid fa-car"></i> Placa</th>
+                        <th><i class="fa-solid fa-square-parking"></i> Vaga</th>
+                        <th><i class="fa-solid fa-calendar-days"></i> Data Entrada</th>
+                        <th><i class="fa-solid fa-calendar-check"></i> Data Saída</th>
+                        <th><i class="fa-solid fa-dollar-sign"></i> Valor Cobrado</th>
+                        <th>Duração (minutos)</th>
+                        <th>Ações</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="registro : ${registroPage.content}">
+                        <td th:text="${(registro.veiculo != null and registro.veiculo.cliente != null) ? registro.veiculo.cliente.nome : 'N/A'}"></td>
+                        <td th:text="${registro.veiculo != null ? registro.veiculo.placa : 'N/A'}"></td>
+                        <td th:text="${registro.vaga != null ? registro.vaga.numeroVaga : 'N/A'}"></td>
+                        <td th:text="${#temporals.format(registro.dataEntrada, 'dd/MM/yyyy HH:mm')}"></td>
+                        <td th:text="${registro.dataSaida != null ? #temporals.format(registro.dataSaida, 'dd/MM/yyyy HH:mm') : 'Em aberto'}"></td>
+                        <td th:text="${registro.valorCobrado != null ? registro.valorCobrado : '-'}"></td>
+                        <td th:text="${registro.duracao != null ? registro.duracao : '-'}"></td>
+                        <td>
+                            <a class="btn btn-danger btn-sm" th:href="@{'/registros/excluir/' + ${registro.idRegistro}}"
+                               onclick="return confirm('Deseja realmente excluir este registro?');">
+                                <i class="fa-solid fa-trash me-1"></i> Excluir
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <nav>
+                <ul class="pagination justify-content-center">
+                    <li class="page-item" th:each="pageNum : ${pageNumbers}">
+                        <a class="page-link" th:href="@{/registros(page=${pageNum})}" th:text="${pageNum}"
+                           th:classappend="${registroPage.number + 1 == pageNum} ? ' active' : ''"></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</main>
+<footer class="bg-dark text-white text-center py-3">
+    <div class="container">
+        <button class="btn btn-outline-light" onclick="window.location.href='/'">
+            <i class="fa-solid fa-arrow-left me-1"></i> Voltar para o Início
+        </button>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
